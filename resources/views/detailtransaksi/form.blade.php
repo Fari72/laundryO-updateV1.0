@@ -17,8 +17,8 @@
                             <label class="mb-2" for="id_transaksi">Transaksi</label>
                             <select type="text" class="form-control" name="id_transaksi" id="id_transaksi" value="{{ old('id_transaksi')}}" class="form-control @error('id_transaksi') is-invalid @enderror">
                                 <option selected>pilih...</option>
-                                @foreach ($transaksi as $transaksi)
-                                    <option value="{{$transaksi->id}}">{{$transaksi->id_member}}</option>
+                                @foreach ($member as $member)
+                                    <option value="{{$member->id}}">{{$member->name}}</option>
                                 @endforeach
                                 @error('id_transaksi')
                                 <div class="text-danger">
@@ -52,7 +52,7 @@
                         @enderror
 
                         <div class="my-1">
-                            <label class="mb-2" for="keterangan">Keterangan</label>
+                            <label class="mb-2" for="keterangan">keterangan</label>
                             <input type="text" class="form-control" name="keterangan" id="keterangan" value="{{ old('keterangan')}}" class="form-control @error('keterangan') is-invalid @enderror">
                             @error('keterangan')
                                 <div class="text-danger">

@@ -110,7 +110,7 @@
                     iziToast.error({
                         title: 'Gagal',
                         message: 'Data gagal disimpan',
-                        position: 'topRight'
+                        position: 'topLeft'
                     })
                     return;
                 })

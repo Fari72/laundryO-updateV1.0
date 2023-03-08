@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\DetailTransaksi;
 use App\Models\Transaksi;
 use App\Models\Paket;
+use App\Models\Member;
 use Illuminate\Http\Request;
 use Validator;
 
@@ -20,7 +21,8 @@ class DetailTransaksiController extends Controller
         $detailtransaksi = DetailTransaksi::all();
         $transaksi = Transaksi::all();
         $paket = Paket::all();
-        return view('detailtransaksi.index', compact('detailtransaksi','transaksi','paket'));
+        $member = Member::all();
+        return view('detailtransaksi.index', compact('detailtransaksi','transaksi','paket','member'));
     }
 
     public function data()
@@ -34,7 +36,7 @@ class DetailTransaksiController extends Controller
                 return !empty($detailtransaksi->transaksi->name) ? $detailtransaksi->transaksi->name : '-';
               })
             ->editColumn('id_paket', function($detailtransaksi){
-            return !empty($detailtransaksi->paket->name) ? $detailtransaksi->paket->name : '-';
+            return !empty($detailtransaksi->paket->nama_paket) ? $detailtransaksi->paket->nama_paket : '-';
             })
             ->addColumn('aksi', function($detailtransaksi){
                 return '
@@ -69,18 +71,14 @@ class DetailTransaksiController extends Controller
             'id_transaksi' => 'required',
             'id_paket' => 'required',
             'qty' => 'required|numeric',
-            'keterangan' => 'required',
+            'keterangan' => 'required|min:15',
         ]);
-
-        if($validator->fails()){
-            return response()->json($validator->errors(), 422);
-        }
-
-        $detailtransaksi = DetailTransaksi::create([
+ 
+        $detailtransaksi = DetailTransaksi::create($request->all(),[
             'id_transaksi' => $request->id_transaksi,
             'id_paket' => $request->id_paket,
             'qty' => $request->qty,
-            'keteragan' => $request->keteragan,
+            'keterangan' => $request->keterangan,
         ]);
 
         return response()->json([
@@ -88,6 +86,10 @@ class DetailTransaksiController extends Controller
             'message' => 'Data Berhasil Disimpan',
             'data' => $detailtransaksi
         ]);
+        
+        if($validator->fails()){
+            return response()->json($validator->errors(), 422);
+        }
     }
 
     /**

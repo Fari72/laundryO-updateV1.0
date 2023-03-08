@@ -4,8 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Paket;
 use App\Models\Transaksi;
+use App\Models\Member;
+use App\Models\Paket;
 
 class detailtransaksi extends Model
 {
@@ -15,12 +16,13 @@ class detailtransaksi extends Model
     protected $fillable = [
         'id_transaksi','id_paket','qty','keterangan'
     ];
-    public function paket()
+    
+    public function Transaksi()
     {
-        return  $this->belongsTo('App\Models\Paket', 'id_paket', 'id');
+        return $this->belongsTo('App\Models\Member', 'id_transaksi', 'id');
     }
-    public function transaksi()
+    public function Paket()
     {
-        return $this->belongsTo('App\Models\Transaksi', 'id_transaksi', 'id');
+        return $this->belongsTo('App\Models\Paket', 'id_paket', 'id');
     }
 }

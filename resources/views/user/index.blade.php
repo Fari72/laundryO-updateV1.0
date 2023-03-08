@@ -14,10 +14,10 @@
   <div class="section-body">
     <div class="card">
       <div class="col-2 col-md-2 col-lg-12">
-        {{-- <button type="button" onclick="addForm('{{ route('user.store') }}')" class="btn btn-primary shadow-sm rounded-pill">
+        </div>
+        <!-- <button type="button" onclick="addForm('{{ route('user.store') }}')" class="btn btn-primary shadow-sm rounded-pill">
                 <i class="fa fa-plus"></i> Tambah
-        </button> --}}
-    </div>
+        </button>  -->
       <div class="card-body">
         <table class="table table-hover">
           <thead>
@@ -26,7 +26,6 @@
               <th>Nama</th>
               <th>Email</th>
               <th>Role</th>
-              {{-- <th>Aksi</th> --}}
             </tr>
           </thead>
 
@@ -47,7 +46,6 @@
                   <span class="badge badge-white">{{ $user->role }}</span>
                   @endif
                 </td>
-                <td></td>
               </tr>
             @endforeach
           </tbody>
@@ -58,7 +56,7 @@
   </div>
 @endsection
 
-{{-- @push('script')
+@push('script')
     <script>
         // Data Tables
         let table;
@@ -73,7 +71,7 @@
                 columns: [
                     {data: 'name'}
                     {data: 'email'}
-                    // {data: 'aksi'}
+                    {data: 'aksi'}
                 ]
             });
         })
@@ -163,4 +161,4 @@
 
         }
     </script>
-@endpush --}}
+@endpush

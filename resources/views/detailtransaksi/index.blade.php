@@ -24,9 +24,9 @@
                         <div class="col-12 col-md-2 col-lg-2">
                             </div>
                         </div>
-                        <!-- <button type="button" onclick="addForm('{{ route('detailtransaksi.store') }}')" class="btn btn-primary shadow-sm rounded-pill">
+                        <button type="button" onclick="addForm('{{ route('detailtransaksi.store') }}')" class="btn btn-primary shadow-sm rounded-pill">
                                 <i class="fa fa-plus"></i> Tambah
-                        </button> -->
+                        </button>
 
                     {{-- Tabel --}}
                     <div class="card-body" style="width: 100%;">

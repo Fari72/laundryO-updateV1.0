@@ -68,7 +68,7 @@
 
                             <div class="my-1">
                                 <label class="mb-2" for="biaya_tambahan">Biaya Tambahan</label>
-                                <input type="number" class="form-control" name="biaya_tambahan" id="biaya_tambahan" value="{{ old('biaya_tambahan')}}" class="form-control @error('biaya_tambahan') is-invalid @enderror">
+                                <input type="number" class="form-control" name="biaya_tambahan" id="biaya_tambahan" value="0" class="form-control @error('biaya_tambahan') is-invalid @enderror">
                                 @error('biaya_tambahan')
                                     <div class="text-danger">
                                         {{ $message }}
@@ -78,7 +78,7 @@
 
                             <div class="my-1">
                                 <label class="mb-2" for="diskon">Diskon</label>
-                                <input type="number" class="form-control" name="diskon" id="diskon" value="{{ old('diskon')}}" class="form-control @error('diskon') is-invalid @enderror">
+                                <input type="number" class="form-control" name="diskon" id="diskon" value="0" class="form-control @error('diskon') is-invalid @enderror">
                                 @error('diskon')
                                     <div class="text-danger">
                                         {{ $message }}
@@ -106,8 +106,8 @@
                                 <label class="mb-2" for="dibayar">Dibayar</label>
                                 <select type="enum" class="form-control" name="dibayar" id="dibayar" value="{{ old('dibayar')}}" class="form-control @error('dibayar') is-invalid @enderror">
                                 <option selected>-</option>
-                                <option value="sudah-bayar">sudah bayar</option>
                                 <option value="belum-bayar">belum bayar</option>
+                                <option value="sudah-bayar">sudah bayar</option>
                                 </select>
                                     @error('dibayar')
                                     <div class="text-danger">

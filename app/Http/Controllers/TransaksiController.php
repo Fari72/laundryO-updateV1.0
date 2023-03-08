@@ -45,7 +45,7 @@ class TransaksiController extends Controller
             ->editColumn('id_member', function($transaksi){
                 return !empty($transaksi->member->name) ? $transaksi->member->name : '-';
               })
-            ->editColumn('user', function($transaksi){
+            ->editColumn('id_user', function($transaksi){
                 return !empty($transaksi->user->name) ? $transaksi->user->name : '-';
               })
             ->addColumn('aksi', function($transaksi){

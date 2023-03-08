@@ -48,7 +48,7 @@
 
                       <div class="form-group col-12">
                         <label for="password" class="d-block">Password</label>
-                        <input id="password" type="password" class="form-control pwstrength" data-indicator="pwindicator" name="password">
+                        <input id="password" type="password" class="form-control" name="password">
                         <div id="pwindicator" class="pwindicator">
                           <div class="bar"></div>
                           <div class="label"></div>
@@ -73,7 +73,7 @@
         </div>
       </div>
       <div class="simple-footer">
-        Copyright &copy; Aizan <!--{{ date('Y') }}-->
+        Copyright &copy; Aizan {{ date('m') }}
       </div>
     </section>
   </div>

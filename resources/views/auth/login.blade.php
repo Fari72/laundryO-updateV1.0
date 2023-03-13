@@ -62,12 +62,26 @@
                     @enderror
                   </div>
                    
+                  
                   <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
                       Login
                     </button>
                   </div>
                 </form>
+    
+              <div class="form-group row">
+                <div class="col-md-6 offset-md-3">
+                    <div class="checkbox">
+                        <label>
+                          <label>
+                              <input type="checkbox" name="remember"> Remember Me
+                          </label>
+                          <a href="{{ route('forget.password.get') }}">Reset Password</a>
+                        </label>
+                    </div>
+                </div>
+            </div>
                 
               </div>
             </div>

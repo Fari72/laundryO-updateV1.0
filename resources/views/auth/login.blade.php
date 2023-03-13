@@ -74,9 +74,6 @@
                 <div class="col-md-6 offset-md-3">
                     <div class="checkbox">
                         <label>
-                          <label>
-                              <input type="checkbox" name="remember"> Remember Me
-                          </label>
                           <a href="{{ route('forget.password.get') }}">Reset Password</a>
                         </label>
                     </div>

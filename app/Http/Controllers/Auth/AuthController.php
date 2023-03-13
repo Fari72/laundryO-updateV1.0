@@ -32,13 +32,13 @@ class AuthController extends Controller
         ]);
         return view('auth.login');
     }
-
+// menambahkan password maksimal 8 huruf/karakter
     public function postlogin(Request $request)
     {
 
         $request->validate([
             'email' => 'required',
-            'password' => 'required'
+            'password' => 'required|max:8'
         ]);
 
         if (Auth::attempt($request->only('email', 'password'))) {

@@ -60,15 +60,6 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $user = User::create($request->all(),[
-         'name' => $request->name,
-         'email' => $request->email,
-         'password' => bcrypt($request->password),
-         'role' => 'admin',
-         'role' => 'kasir',
-         'remember_token' => Str::random(20),
-        ]);
-        
         $validator = Validator::make($request->all(),[
             'name' => 'required|alpha',
             'email' => 'required',
@@ -76,8 +67,26 @@ class UserController extends Controller
             'role' => 'required'
         ]);
 
+        if($validator->fails()){
+            return response()->json($validator->errors(), 422);
+        }
 
-       return response()->json([
+        $user = User::create($request->all(),[
+         'name' => $request->name,
+         'email' => $request->email,
+         'password' => bcrypt($request->password),
+         'role' => 'kasir',
+         'remember_token' => Str::random(20),
+        ]);
+
+        $user = user::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password,
+            'role' => $request->role,
+        ]);
+        
+        return response()->json([
         'success' => true,
         'massage' => 'Data berhasil disimpan',
         'data' => $user
@@ -105,6 +114,10 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->role = $request->role;
         return view('user.form', compact('user')); 
     }
 

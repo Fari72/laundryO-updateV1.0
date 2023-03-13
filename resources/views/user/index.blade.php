@@ -16,8 +16,8 @@
       <div class="col-2 col-md-2 col-lg-12">
         </div>
         <!-- <button type="button" onclick="addForm('{{ route('user.store') }}')" class="btn btn-primary shadow-sm rounded-pill">
-                <i class="fa fa-plus"></i> Tambah
-        </button>  -->
+                <i class="fa fa-plus"></i> Tambah -->
+        </button> 
       <div class="card-body">
         <table class="table table-hover">
           <thead>

@@ -8,6 +8,7 @@ use App\Models\Paket;
 use App\Models\Member;
 use Illuminate\Http\Request;
 use Validator;
+use PDF;
 
 class DetailTransaksiController extends Controller
 {
@@ -43,6 +44,7 @@ class DetailTransaksiController extends Controller
                 <div class="btn-group">
                     <button onclick="editData(`' .route('detailtransaksi.update', $detailtransaksi->id). '`)" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></button>
                     <button onclick="deleteData(`' .route('detailtransaksi.destroy', $detailtransaksi->id). '`)" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+                    <a href="' .route('detailtransaksi.pdf', $detailtransaksi->id). '" target="_blank" onclick="(`' .route('detailtransaksi.pdf', $detailtransaksi->id). '`)" class="btn btn-success btn-sm"><i class="fa fa-print"></i></a>
                 </div>
                 ';
             })
@@ -151,5 +153,13 @@ class DetailTransaksiController extends Controller
     {
         $detailtransaksi = DetailTransaksi::find($id);
         $detailtransaksi->delete();
+    }
+
+    public function pdf($id)
+    {
+        $detailtransaksi = DetailTransaksi::find($id);
+        
+        $pdf = PDF::loadview('detailtransaksi.pdf', compact('detailtransaksi'));
+        return $pdf->stream('detailtransaksi.pdf', array('Attachment'=>1));
     }
 }

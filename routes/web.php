@@ -30,10 +30,15 @@ Route::group(['middleware' => 'auth', 'checkRole:admin'], function () {
   Route::post('/profile/{id}', [UserController::class, 'update'])->name('profile.update');
 });
 
+// menambahkan rute ke pdf
 Route::get('/detailtransaksi/data', [DetailtransaksiController::class, 'data'])->name('detailtransaksi.data');
+Route::get('/detailtransaksi/pdf/{id}', [detailtransaksiController::class, 'pdf'])->name('detailtransaksi.pdf');
+// route::post('/transaksi/cetak-barcode', [transaksiController::class, 'cetakBarcode'])->name('transaksi.barcode');
 Route::resource('/detailtransaksi', DetailtransaksiController::class);
 
+// menambahkan rute ke pdf
 Route::get('/transaksi/data', [TransaksiController::class, 'data'])->name('transaksi.data');
+Route::get('/transaksi/pdf/{id}', [transaksiController::class, 'pdf'])->name('transaksi.pdf');
 Route::resource('/transaksi', TransaksiController::class);
 
 Route::get('/member/data', [MemberController::class, 'data'])->name('member.data');

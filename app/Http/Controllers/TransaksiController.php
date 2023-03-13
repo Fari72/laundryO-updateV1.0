@@ -8,6 +8,7 @@ use App\Models\member;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Validator;
+use PDF;
 
 class TransaksiController extends Controller
 {
@@ -53,7 +54,8 @@ class TransaksiController extends Controller
                 <div class="btn-group">
                     <button onclick="editData(`' .route('transaksi.update', $transaksi->id). '`)" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></button>
                     <button onclick="deleteData(`' .route('transaksi.destroy', $transaksi->id). '`)" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
-                </div>
+                    <a href="' .route('transaksi.pdf', $transaksi->id). '" target="_blank" onclick="(`' .route('transaksi.pdf', $transaksi->id). '`)" class="btn btn-success btn-sm"><i class="fa fa-print"></i></a>
+                    </div>
                 ';
             })
             ->rawColumns(['aksi','id_member','id_transaksi'])
@@ -164,7 +166,7 @@ class TransaksiController extends Controller
     public function update(Request $request, $id)
     {
         $transaksi = Transaksi::find($id);
-        $transaksi->id_outlet = $request->id_outlet;
+        $transaksi->id_outle = $request->id_outle;
         $transaksi->kode_invoice = $request->kode_invoice;
         $transaksi->id_member = $request->id_member;
         $transaksi->tgl = $request->tgl;
@@ -192,5 +194,28 @@ class TransaksiController extends Controller
         $transaksi->delete();
 
         return redirect('transaksi');
+    }
+
+    // public function cetakBarcode(request $request)
+    // {
+    //     $datatransaksi = array();
+    //     foreach ($request->id as $id){
+    //         $transaksi = Transaksi::find($id);
+    //         $datatransaksi[] = $transaksi;
+    //     }
+
+    //     $no = 1;
+
+    //     $pdf =  PDF::loadview('transaksi.pdf', compact('transaksi'));
+    //     $pdf->setPaper([0, 0, 289, 13385827, 360], 'landscape');
+    //     return $pdf->stream('transaksi.pdf');
+    // }
+
+    public function pdf($id)
+    {
+        $transaksi = Transaksi::find($id);
+        
+        $pdf = PDF::loadview('transaksi.pdf', compact('transaksi'));
+        return $pdf->stream('transaksi.pdf', array('Attachment'=>1));
     }
 }

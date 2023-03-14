@@ -1,6 +1,6 @@
 <?php 
   
-namespace App\Http\Controllers\Auth; 
+namespace App\Http\Controllers; 
   
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request; 
@@ -10,7 +10,8 @@ use App\Models\User;
 use Mail; 
 use Hash;
 use Illuminate\Support\Str;
-  
+use App\Models\ForgotPassword;
+
 class ForgotPasswordController extends Controller
 {
       /**

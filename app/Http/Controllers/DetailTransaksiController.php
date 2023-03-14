@@ -73,7 +73,7 @@ class DetailTransaksiController extends Controller
             'id_transaksi' => 'required',
             'id_paket' => 'required',
             'qty' => 'required|numeric',
-            'keterangan' => 'required|min:15',
+            'keterangan' => 'required|min:225',
         ]);
  
         $detailtransaksi = DetailTransaksi::create($request->all(),[

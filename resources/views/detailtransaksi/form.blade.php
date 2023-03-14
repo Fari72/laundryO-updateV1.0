@@ -44,7 +44,7 @@
                         </div>
 
                         <label class="mt-2" for="qty">Jumlah</label>
-                        <input type="numeric" class="form-control" name="qty" id="qty" class="form-control @error('qty') is-invalid @enderror">
+                        <input type="number" min="0" class="form-control" name="qty" id="qty" class="form-control @error('qty') is-invalid @enderror">
                         @error('qty')
                             <div class="text-danger">
                                 {{ $message }}

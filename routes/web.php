@@ -10,7 +10,8 @@ use App\Http\Controllers\{
   DetailtransaksiController,
   MemberController,
   OutletController,
-  PaketController
+  PaketController,
+  ForgotPasswordController
 };
 
 // login
@@ -21,6 +22,12 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/simpanRegister', [AuthController::class, 'simpanRegister'])->name('simpanRegister');
 
+// rute lupa paswowrd
+Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
+Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
+Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
+
 Route::group(['middleware' => 'auth', 'checkRole:admin'], function () {
   Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
@@ -29,12 +36,6 @@ Route::group(['middleware' => 'auth', 'checkRole:admin'], function () {
   Route::get('/user/{id}/profile', [UserController::class, 'profile'])->name('user.profile');
   Route::post('/profile/{id}', [UserController::class, 'update'])->name('profile.update');
 });
-
-// rute lupa paswowrd
-Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
-Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
-Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
-Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 
 // menambahkan rute ke pdf
 Route::get('/detailtransaksi/data', [DetailtransaksiController::class, 'data'])->name('detailtransaksi.data');

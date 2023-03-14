@@ -166,7 +166,7 @@ class TransaksiController extends Controller
     public function update(Request $request, $id)
     {
         $transaksi = Transaksi::find($id);
-        $transaksi->id_outle = $request->id_outle;
+        $transaksi->id_outlet = $request->id_outlet;
         $transaksi->kode_invoice = $request->kode_invoice;
         $transaksi->id_member = $request->id_member;
         $transaksi->tgl = $request->tgl;

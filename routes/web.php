@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use PharIo\Manifest\AuthorCollection;
-use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Auth\{AuthController,
+  ForgotPasswordController
+};
 use App\Http\Controllers\{
   DashboardController,
   UserController,
@@ -11,7 +13,6 @@ use App\Http\Controllers\{
   MemberController,
   OutletController,
   PaketController,
-  ForgotPasswordController
 };
 
 // login
